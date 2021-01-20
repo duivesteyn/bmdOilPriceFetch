@@ -7,6 +7,8 @@ I've found a lack of good simple ways to get the oil price from a free online AP
 It simply returns a dictionary with the current market data for Oil (by default).
 
 
+![Screenshot](screenshot.png)
+
 # Example Usage
 An example usage file is included called getPrice.py. It consists of the following:
 
