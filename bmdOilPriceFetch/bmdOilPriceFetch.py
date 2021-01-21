@@ -9,7 +9,7 @@
 import requests
 import time
 
-def getDataFromYahoo(ticker="CL=F"):
+def getData(ticker):
     """Gets Yahoo Finance Stock Data via a simple API. No Page Scraping. the y! ticker for WTI is "CL=F" """
     start_seconds=int(time.time()) - 86400                                          #start_date = pd.Timestamp.today() - pd.DateOffset(1), 
     end_seconds=int(time.time()) +86400                                             #end_date = pd.Timestamp.today() + pd.DateOffset(1))
@@ -24,9 +24,9 @@ def getDataFromYahoo(ticker="CL=F"):
 
     return data
 
-def main():
+def bmdPriceFetch(ticker="CL=F"):
     """Compile Oil Price Data into Nice Dictionary for the User"""
-    data = getDataFromYahoo("CL=F") 
+    data = getData(ticker) 
     keyOutputData = {} 
 
     #Build up the simple dictionary from the input data
@@ -39,9 +39,7 @@ def main():
     keyOutputData["lastClose"] = data["chart"]["result"][0]["meta"]["chartPreviousClose"]
     keyOutputData["metadata"] = data["chart"]["result"][0]["meta"]
 
-    print(keyOutputData)
-
     return keyOutputData
 
 if __name__ == "__main__":
-    main()
+    bmdPriceFetch()

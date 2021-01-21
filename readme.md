@@ -15,8 +15,16 @@ An example usage file is included called getPrice.py. It consists of the followi
     from bmdOilPriceFetch import bmdOilPriceFetch
     import pprint
 
-    data = bmdOilPriceFetch.main()
+    #Get and Print WTI Oil Price
+    data = bmdOilPriceFetch.bmdPriceFetch()
     pprint.pprint(data)
+    outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
+    print(outputString)
+
+    #Get and Print AAPL Stock Price
+    data = bmdOilPriceFetch.bmdPriceFetch('XOM')
+    pprint.pprint(data)
+    print("The price is", data['regularMarketPrice'])
 
 # Example OuptutData
 The output is a dictionary:
@@ -69,7 +77,6 @@ The output is a dictionary:
 
 # To do
 
-* Enable importing as an Object
 * Create as a package
 
 # Credits
@@ -79,3 +86,4 @@ designed in 2021 by bmd.
 # Changelog
 
 * v0.1  2021-01-20  Initial Revision. Execution Time around 500ms. Code= 47 Lines
+* v0.2  2021-01-22  Minor tidy up, allows input of any Stock. Execution Time around 500ms. Code= 45 Lines
