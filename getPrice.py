@@ -1,8 +1,10 @@
-from bmdOilPriceFetch import bmdOilPriceFetch
-import pprint
+#!/usr/bin/env python
+import bmdOilPriceFetch
 
 #Get and Print WTI Oil Price
-data = bmdOilPriceFetch.bmdPriceFetch()
-#pprint.pprint(data)
-outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
-print(outputString)
+def printPrice():
+    data = bmdOilPriceFetch.bmdPriceFetch()
+    outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
+    print(outputString)
+
+printPrice()
