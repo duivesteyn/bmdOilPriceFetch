@@ -11,24 +11,28 @@ It simply returns a dictionary with the current market data for Oil (by default)
 
 
 # Example Usage
-An example usage file is included called getPrice.py. It consists of the following::
+An example usage file is included called getPrice.py. It consists of the following:
 
     #!/usr/bin/env python
     import bmdOilPriceFetch
 
     #Get and Print WTI Oil Price
-    def printPrice():
+    def printOilPrice():
         data = bmdOilPriceFetch.bmdPriceFetch()
         outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
         print(outputString)
 
-    printPrice()
+    #Get and Print the Price of a Company Stock (Yahoo! Finance Format)
+    def printAStockPrice():
+        ticker='AAPL'
+        data = bmdOilPriceFetch.bmdPriceFetch(ticker)
+        outputString = "The price of " + ticker + " is $" + str("%.2f" % data['regularMarketPrice'])
+        print(outputString)
 
-    #Get and Print AAPL Stock Price
-    data = bmdOilPriceFetch.bmdPriceFetch('XOM')
-    print("The price is", data['regularMarketPrice'])
-
-# Example OuptutData
+    printOilPrice()
+    printAStockPrice()
+    
+# Example Output Data
 The output is a dictionary:
 
     {   'close': 53.650001525878906, 
