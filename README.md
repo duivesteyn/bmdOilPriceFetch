@@ -18,12 +18,14 @@ An example usage file is included called getPrice.py. It consists of the followi
 
     #Get and Print WTI Oil Price
     def printOilPrice():
+
         data = bmdOilPriceFetch.bmdPriceFetch()
         outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
         print(outputString)
 
     #Get and Print the Price of a Company Stock (Yahoo! Finance Format)
     def printAStockPrice():
+    
         ticker='AAPL'
         data = bmdOilPriceFetch.bmdPriceFetch(ticker)
         outputString = "The price of " + ticker + " is $" + str("%.2f" % data['regularMarketPrice'])
