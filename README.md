@@ -102,7 +102,7 @@ designed in 2021 by bmd.
 
 # Changelog
 
+* v0.3  2021-06-21  Bugfix. ^GSPC Lookup didnt work on weekends for Close. Made more fault tolerant.
 * v0.3  2021-02-06  Released as a package.
 * v0.2  2021-01-22  Minor tidy up, allows input of any Stock. Execution Time around 500ms. Code= 45 Lines
-
 * v0.1  2021-01-20  Initial Revision. Execution Time around 500ms. Code= 47 Lines
