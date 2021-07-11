@@ -8,14 +8,24 @@
 
 import requests
 import time
+import logging
+import sys
 
 def getData(ticker):
     """Gets Yahoo Finance Stock Data via a simple API. No Page Scraping. the y! ticker for WTI is "CL=F" """
     start_seconds=int(time.time()) - 86400                                          #start_date = pd.Timestamp.today() - pd.DateOffset(1), 
     end_seconds=int(time.time()) + 86400                                            #end_date = pd.Timestamp.today() + pd.DateOffset(1))
-    site = "https://query1.finance.yahoo.com/v8/finance/chart/" + ticker
+    site = "https://query2.finance.yahoo.com/v8/finance/chart/" + ticker
+    headers = { 
+    'User-Agent'      : 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/91.0.4472.80 Mobile/15E148 Safari/604.1', 
+    'Accept'          : 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 
+    'Accept-Language' : 'en-US,en;q=0.5',
+    'DNT'             : '1', # Do Not Track Request Header 
+    'Connection'      : 'close'
+}
     params = {"period1": start_seconds, "period2": end_seconds,"interval": "1d"}
-    resp = requests.get(site, params = params)
+    logging.info(params)
+    resp = requests.get(site, params = params, headers = headers)
 
     if not resp.ok:
         raise AssertionError(resp.json())
@@ -40,5 +50,6 @@ def bmdPriceFetch(ticker="CL=F"):
     return keyOutputData
 
 if __name__ == "__main__":
+    logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     data = bmdPriceFetch()
     print(data)

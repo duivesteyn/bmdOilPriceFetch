@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='bmdOilPriceFetch',
-    version='0.4',
+    version='0.5',
     author='Benjamin M. Duivesteyn',
     author_email='duivesteyn@gmail.com',
     packages=['bmdOilPriceFetch'],
