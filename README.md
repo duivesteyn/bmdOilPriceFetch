@@ -4,38 +4,39 @@ A **Fast** and **Efficient** way to get the **current** Oil Price from Yahoo Fin
 
 I've found a lack of good simple ways to get the oil price from a free online API, so I designed one myself based upon Yahoo Finance. 
 
-It simply returns a dictionary with the current market data for Oil (by default).
+It simply returns a dictionary with the current market data for Oil (WTI Front Month).
 
+It also accepts a parameter <code>ticker</code> which will get the market data for that ticker on Yahoo Finance. i.e bmdPriceFetch() 
 
 ![](https://github.com/duivesteyn/bmdOilPriceFetch/raw/main/screenshot.png)
 
 
 # Example Usage
 An example usage file is included called test.py. It contains the basics for running this code. It is in essense: 
+```py
+    from bmdOilPriceFetch import bmdPriceFetch
 
-    import bmdOilPriceFetch
-
-    #Get and Print WTI Oil Price
     def printOilPrice():
+    """Get and Print WTI Oil Price"""
 
-        data = bmdOilPriceFetch.bmdPriceFetch()
+        data = bmdPriceFetch()
         outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
         print(outputString)
 
-    #Get and Print the Price of a Company Stock (Yahoo! Finance Format)
-    def printAStockPrice():
-    
-        ticker='AAPL'
-        data = bmdOilPriceFetch.bmdPriceFetch(ticker)
+    def printAStockPrice(ticker='AAPL'):
+    """Get and Print the Price of a Company Stock (Yahoo! Finance Format)"""
+
+        data = bmdPriceFetch(ticker)
         outputString = "The price of " + ticker + " is $" + str("%.2f" % data['regularMarketPrice'])
         print(outputString)
 
     printOilPrice()
     printAStockPrice()
-    
+```
+
 # Example Output Data
 The output is a dictionary:
-
+```json
     {   'close': 53.650001525878906, 
         'high': 53.650001525878906, 
         'lastClose': 52.98, 
@@ -95,16 +96,18 @@ The output is a dictionary:
                 '10y',
                 'ytd',
                 'max']}}
-
-
-# Credits
-
-designed in 2021 by bmd.
+```
 
 # Changelog
 
+* v0.6  2021-11-25  Minor Readability Improvements.
 * v0.5  2021-07-11  Yahoo! Finance API decided they want a user agent. Added.
 * v0.4  2021-06-21  Bugfix. ^GSPC Lookup didnt work on weekends for Close. Made more fault tolerant.
 * v0.3  2021-02-06  Released as a package.
 * v0.2  2021-01-22  Minor tidy up, allows input of any Stock. Execution Time around 500ms. Code= 45 Lines
 * v0.1  2021-01-20  Initial Revision. Execution Time around 500ms. Code= 47 Lines
+
+
+# Credits
+
+designed in 2021 by bmd.
