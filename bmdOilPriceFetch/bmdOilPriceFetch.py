@@ -54,7 +54,7 @@ def bmdPriceFetch(ticker="CL=F"):
         keyOutputData["regularMarketPrice"] = data["chart"]["result"][0]["meta"]["regularMarketPrice"]
         keyOutputData["lastClose"] = data["chart"]["result"][0]["meta"]["chartPreviousClose"]
         keyOutputData["metadata"] = data["chart"]["result"][0]["meta"]
-        
+
     return keyOutputData
 
 if __name__ == "__main__":
@@ -64,9 +64,11 @@ if __name__ == "__main__":
 
     #Print WTI 'Front Month' Price
     data = bmdPriceFetch()
-    #print(data)
+    print(data)
+    print(f'\nThe Price of WTI Oil is: ${data["regularMarketPrice"]}\n')
 
     #Print Other Yahoo Finance Code
-    ticker = 'KRM.AX'
+    ticker = 'BHP.AX'
     data = bmdPriceFetch(ticker)
+    print(f'\nThe Price of {ticker}  is: ${data["regularMarketPrice"]}\n')
     print(data)
