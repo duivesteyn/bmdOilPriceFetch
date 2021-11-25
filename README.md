@@ -107,6 +107,8 @@ The output is a dictionary:
 * v0.2  2021-01-22  Minor tidy up, allows input of any Stock. Execution Time around 500ms. Code= 45 Lines
 * v0.1  2021-01-20  Initial Revision. Execution Time around 500ms. Code= 47 Lines
 
+# Notes for uploading to pypi
+* https://www.section.io/engineering-education/building-a-python-package-and-publishing-on-pypi/
 
 # Credits
 
