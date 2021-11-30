@@ -20,15 +20,17 @@ An example usage file is included called test.py. It contains the basics for run
     """Get and Print WTI Oil Price"""
 
         data = bmdPriceFetch()
-        outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
-        print(outputString)
+        if data is not None:
+            outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
+            print(outputString)
 
     def printAStockPrice(ticker='AAPL'):
     """Get and Print the Price of a Company Stock (Yahoo! Finance Format)"""
 
         data = bmdPriceFetch(ticker)
-        outputString = "The price of " + ticker + " is $" + str("%.2f" % data['regularMarketPrice'])
-        print(outputString)
+        if data is not None:
+            outputString = "The price of " + ticker + " is $" + str("%.2f" % data['regularMarketPrice'])
+            print(outputString)
 
     printOilPrice()
     printAStockPrice()
@@ -100,12 +102,13 @@ The output is a dictionary:
 
 # Changelog
 
-* v0.6  2021-11-25  Minor Readability Improvements.
-* v0.5  2021-07-11  Yahoo! Finance API decided they want a user agent. Added.
-* v0.4  2021-06-21  Bugfix. ^GSPC Lookup didnt work on weekends for Close. Made more fault tolerant.
-* v0.3  2021-02-06  Released as a package.
-* v0.2  2021-01-22  Minor tidy up, allows input of any Stock. Execution Time around 500ms. Code= 45 Lines
-* v0.1  2021-01-20  Initial Revision. Execution Time around 500ms. Code= 47 Lines
+* v0.6.1    2021-11-30  Readme Fix.
+* v0.6      2021-11-30  Error Catching & Minor Readability Improvements.
+* v0.5      2021-07-11  Yahoo! Finance API decided they want a user agent. Added.
+* v0.4      2021-06-21  Bugfix. ^GSPC Lookup didnt work on weekends for Close. Made more fault tolerant.
+* v0.3      2021-02-06  Released as a package.
+* v0.2      2021-01-22  Minor tidy up, allows input of any Stock. Execution Time around 500ms. Code= 45 Lines
+* v0.1      2021-01-20  Initial Revision. Execution Time around 500ms. Code= 47 Lines
 
 # Notes for uploading to pypi
 * https://www.section.io/engineering-education/building-a-python-package-and-publishing-on-pypi/
