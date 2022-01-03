@@ -13,7 +13,7 @@ def main():
 
     data = bmdPriceFetch()
     if data is not None:
-        outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
+        outputString = f"The price of WTI is ${data['regularMarketPrice']:.2f}"
         print(outputString)
 
 def printAStockPrice(ticker='XOM'):
@@ -21,7 +21,7 @@ def printAStockPrice(ticker='XOM'):
 
     data = bmdPriceFetch(ticker)
     if data is not None:
-        outputString = "The price of " + ticker + " is $" + str("%.2f" % data['regularMarketPrice'])
+        outputString = f"The price of {ticker} is ${data['regularMarketPrice']:.2f}"
         print(outputString)
 
 

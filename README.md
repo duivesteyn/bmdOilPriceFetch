@@ -12,28 +12,14 @@ It also accepts a parameter <code>ticker</code> which will get the market data f
 
 
 # Example Usage
-An example usage file is included called test.py. It contains the basics for running this code. It is in essense: 
+An example usage file is included called main.py. It contains the basics for running this code. It is in essense: 
 ```py
-    from bmdOilPriceFetch import bmdPriceFetch
+from bmdOilPriceFetch import bmdPriceFetch
 
-    def printOilPrice():
-    """Get and Print WTI Oil Price"""
-
-        data = bmdPriceFetch()
-        if data is not None:
-            outputString = 'The price of WTI is $' + str("%.2f" % data['regularMarketPrice'])
-            print(outputString)
-
-    def printAStockPrice(ticker='AAPL'):
-    """Get and Print the Price of a Company Stock (Yahoo! Finance Format)"""
-
-        data = bmdPriceFetch(ticker)
-        if data is not None:
-            outputString = "The price of " + ticker + " is $" + str("%.2f" % data['regularMarketPrice'])
-            print(outputString)
-
-    printOilPrice()
-    printAStockPrice()
+data = bmdPriceFetch()
+if data is not None:
+    outputString = f"The price of WTI is ${data['regularMarketPrice']:.2f}"
+    print(outputString)
 ```
 
 # Example Output Data
