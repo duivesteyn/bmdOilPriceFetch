@@ -44,4 +44,3 @@ def printAStockPriceThatDoesntExist():
 # Main body
 if __name__ == '__main__':
     printAStockPrice()
-    printAStockPriceThatDoesntExist()
